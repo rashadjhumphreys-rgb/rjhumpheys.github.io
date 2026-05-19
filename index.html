@@ -3,29 +3,532 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rashad Humphreys| Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Rashad Humphreys | IT & Data Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark: #0d1117;
+      --dark2: #161b22;
+      --teal: #1a7a6e;
+      --teal-light: #22a99a;
+      --teal-glow: rgba(26, 122, 110, 0.15);
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--dark);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(13, 17, 23, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--teal-light); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 8rem 6rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(26,122,110,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.2rem;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .avatar-ring {
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      border: 3px solid var(--teal);
+      padding: 4px;
+      background: linear-gradient(135deg, var(--teal), var(--dark2));
+      box-shadow: 0 0 40px rgba(26,122,110,0.3);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    .avatar-initials {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1a7a6e, #0d2e2a);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: var(--teal-light);
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--text);
+    }
+
+    .hero-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-links a {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+      background: var(--dark2);
+    }
+
+    .hero-links a:hover {
+      border-color: var(--teal);
+      color: var(--teal-light);
+    }
+
+    /* HERO RIGHT */
+    .hero-right {
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+
+    .label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-right h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3rem;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .hero-right p {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 3rem;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      transition: all 0.25s;
+      cursor: default;
+    }
+
+    .skill-card:hover {
+      border-color: var(--teal);
+      background: var(--teal-glow);
+      transform: translateY(-3px);
+    }
+
+    .skill-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .skill-name { font-size: 0.85rem; font-weight: 500; color: var(--text); }
+
+    /* EDUCATION / EXPERIENCE */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 6px; bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.45rem; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 2px solid var(--dark);
+      box-shadow: 0 0 8px var(--teal);
+    }
+
+    .timeline-year {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .timeline-org {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem;
+      transition: all 0.25s;
+    }
+
+    .project-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(26,122,110,0.15);
+    }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      background: var(--teal-glow);
+      border: 1px solid rgba(26,122,110,0.3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    .project-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .contact-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .contact-card:hover {
+      border-color: var(--teal);
+      background: var(--teal-glow);
+    }
+
+    .contact-icon { font-size: 1.5rem; }
+    .contact-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .contact-value { font-size: 0.9rem; font-weight: 500; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 6rem 2rem 3rem;
+        text-align: center;
+      }
+      .hero-right p { max-width: 100%; }
+      section { padding: 3rem 2rem; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- NAV -->
   <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <span class="nav-name">Rashad Humphreys</span>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
   </nav>
 
-  <section id="about">
-    <h1>Hi, I'm Rashad Humphreys</h1>
-    <p>"I'm an upcoming senior at the University of Wisconsin-Whitewater studying Information Technology. I'm passionate about data analysis and looking to bring my skills to a professional environment where I can grow and make an impact.</p>
+  <!-- HERO -->
+  <section class="hero" id="about">
+    <div class="hero-left">
+      <div class="avatar-ring">
+        <div class="avatar-initials">RH</div>
+      </div>
+      <div class="hero-name">Rashad Humphreys</div>
+      <div class="hero-title">IT & Data Analysis</div>
+      <div class="hero-links">
+        <a href="https://www.linkedin.com/in/rashad-humphreys-a96a992a2" target="_blank">
+          🔗 LinkedIn
+        </a>
+        <a href="mailto:rashad.j.humphreys@outlook.com">
+          ✉️ Email
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="label">About Me</div>
+      <h1>Data-Driven.<br/>People-Focused.</h1>
+      <p>
+        Hey, I'm Rashad — a senior at UW-Whitewater majoring in Information Technology. 
+        I'm driven by a passion for data and problem-solving, and I'm looking for opportunities 
+        where I can apply my technical skills, grow professionally, and collaborate with others 
+        to solve real problems.
+      </p>
+    </div>
   </section>
 
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="label">What I Work With</div>
+    <div class="section-title">Skills & Tools</div>
+    <div class="section-sub">Technologies I use to analyze, build, and deliver.</div>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-name">Excel</div></div>
+      <div class="skill-card"><div class="skill-icon">🐍</div><div class="skill-name">Python</div></div>
+      <div class="skill-card"><div class="skill-icon">🐧</div><div class="skill-name">Linux</div></div>
+      <div class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-name">SQL</div></div>
+      <div class="skill-card"><div class="skill-icon">💼</div><div class="skill-name">Microsoft Office</div></div>
+      <div class="skill-card"><div class="skill-icon">☁️</div><div class="skill-name">Azure</div></div>
+      <div class="skill-card"><div class="skill-icon">📓</div><div class="skill-name">Jupyter Notebook</div></div>
+      <div class="skill-card"><div class="skill-icon">🔧</div><div class="skill-name">Git</div></div>
+      <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">Cloud Computing</div></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE / EDUCATION -->
+  <section id="experience">
+    <div class="label">Background</div>
+    <div class="section-title">Education & Experience</div>
+    <div class="section-sub">My journey so far.</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2022 – Present</div>
+        <div class="timeline-title">B.S. Information Technology</div>
+        <div class="timeline-org">University of Wisconsin-Whitewater</div>
+        <div class="timeline-desc">Upcoming senior with a focus on data analysis, cloud systems, and IT infrastructure.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">Add your role</div>
+        <div class="timeline-title">Your Job Title Here</div>
+        <div class="timeline-org">Company / Organization</div>
+        <div class="timeline-desc">Brief description of what you did and what you accomplished.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
   <section id="projects">
-    <h2>Projects</h2>
-    <p>Add your projects here.</p>
+    <div class="label">Work</div>
+    <div class="section-title">Projects</div>
+    <div class="section-sub">Things I've built and explored.</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-tag">Data Analysis</div>
+        <h3>Project Title</h3>
+        <p>Brief description of the project — what problem it solved, what tools you used, and what you learned.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-tag">Python</div>
+        <h3>Project Title</h3>
+        <p>Brief description of the project — what problem it solved, what tools you used, and what you learned.</p>
+      </div>
+      <div class="project-card">
+        <div class="project-tag">Cloud / Azure</div>
+        <h3>Project Title</h3>
+        <p>Brief description of the project — what problem it solved, what tools you used, and what you learned.</p>
+      </div>
+    </div>
   </section>
 
+  <!-- CONTACT -->
   <section id="contact">
-    <h2>Contact</h2>
-    <p>rashad.j.humphreys@outlook.com</p>
+    <div class="label">Get In Touch</div>
+    <div class="section-title">Contact</div>
+    <div class="section-sub">Open to opportunities, collaborations, and conversations.</div>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:rashad.j.humphreys@outlook.com">
+        <span class="contact-icon">✉️</span>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">rashad.j.humphreys@outlook.com</div>
+        </div>
+      </a>
+      <a class="contact-card" href="https://www.linkedin.com/in/rashad-humphreys-a96a992a2" target="_blank">
+        <span class="contact-icon">🔗</span>
+        <div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-value">Rashad Humphreys</div>
+        </div>
+      </a>
+      <a class="contact-card" href="https://github.com/shamshamsw" target="_blank">
+        <span class="contact-icon">🐙</span>
+        <div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-value">shamshamsw</div>
+        </div>
+      </a>
+    </div>
   </section>
+
+  <footer>
+    © 2025 Rashad Humphreys · Built with HTML & CSS
+  </footer>
+
 </body>
 </html>
