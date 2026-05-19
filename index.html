@@ -26,7 +26,6 @@
       line-height: 1.7;
     }
 
-    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -64,7 +63,6 @@
 
     .nav-links a:hover { color: var(--teal-light); }
 
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: grid;
@@ -105,6 +103,12 @@
       overflow: hidden;
     }
 
+    .avatar-ring img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
     .avatar-initials {
       width: 100%; height: 100%;
       border-radius: 50%;
@@ -133,6 +137,8 @@
       display: flex;
       gap: 1rem;
       margin-top: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .hero-links a {
@@ -154,10 +160,7 @@
       color: var(--teal-light);
     }
 
-    /* HERO RIGHT */
-    .hero-right {
-      animation: fadeUp 0.8s 0.2s ease both;
-    }
+    .hero-right { animation: fadeUp 0.8s 0.2s ease both; }
 
     .label {
       font-size: 0.75rem;
@@ -183,7 +186,6 @@
       margin-bottom: 2.5rem;
     }
 
-    /* SECTIONS */
     section {
       padding: 5rem 6rem;
       border-top: 1px solid var(--border);
@@ -201,7 +203,6 @@
       margin-bottom: 3rem;
     }
 
-    /* SKILLS */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -227,7 +228,28 @@
     .skill-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
     .skill-name { font-size: 0.85rem; font-weight: 500; color: var(--text); }
 
-    /* EDUCATION / EXPERIENCE */
+    .soft-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .soft-pill {
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .soft-pill:hover {
+      border-color: var(--teal);
+      color: var(--teal-light);
+    }
+
     .timeline {
       display: flex;
       flex-direction: column;
@@ -244,9 +266,7 @@
       background: linear-gradient(to bottom, var(--teal), transparent);
     }
 
-    .timeline-item {
-      position: relative;
-    }
+    .timeline-item { position: relative; }
 
     .timeline-item::before {
       content: '';
@@ -268,24 +288,10 @@
       margin-bottom: 0.3rem;
     }
 
-    .timeline-title {
-      font-weight: 600;
-      font-size: 1rem;
-      color: var(--text);
-    }
+    .timeline-title { font-weight: 600; font-size: 1rem; color: var(--text); }
+    .timeline-org { color: var(--muted); font-size: 0.85rem; margin-bottom: 0.3rem; }
+    .timeline-desc { color: var(--muted); font-size: 0.9rem; }
 
-    .timeline-org {
-      color: var(--muted);
-      font-size: 0.85rem;
-      margin-bottom: 0.3rem;
-    }
-
-    .timeline-desc {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    /* PROJECTS */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -326,12 +332,8 @@
       margin-bottom: 0.5rem;
     }
 
-    .project-card p {
-      color: var(--muted);
-      font-size: 0.88rem;
-    }
+    .project-card p { color: var(--muted); font-size: 0.88rem; }
 
-    /* CONTACT */
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -360,7 +362,6 @@
     .contact-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
     .contact-value { font-size: 0.9rem; font-weight: 500; }
 
-    /* FOOTER */
     footer {
       text-align: center;
       padding: 2rem;
@@ -369,19 +370,13 @@
       border-top: 1px solid var(--border);
     }
 
-    /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* RESPONSIVE */
     @media (max-width: 768px) {
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 6rem 2rem 3rem;
-        text-align: center;
-      }
+      .hero { grid-template-columns: 1fr; padding: 6rem 2rem 3rem; text-align: center; }
       .hero-right p { max-width: 100%; }
       section { padding: 3rem 2rem; }
       nav { padding: 1rem 1.5rem; }
@@ -391,7 +386,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <span class="nav-name">Rashad Humphreys</span>
     <ul class="nav-links">
@@ -407,17 +401,15 @@
   <section class="hero" id="about">
     <div class="hero-left">
       <div class="avatar-ring">
+        <!-- TO ADD YOUR PHOTO: upload profile.jpg to your repo, then replace the div below with:
+             <img src="profile.jpg" alt="Rashad Humphreys" /> -->
         <div class="avatar-initials">RH</div>
       </div>
       <div class="hero-name">Rashad Humphreys</div>
       <div class="hero-title">IT & Data Analysis</div>
       <div class="hero-links">
-        <a href="https://www.linkedin.com/in/rashad-humphreys-a96a992a2" target="_blank">
-          🔗 LinkedIn
-        </a>
-        <a href="mailto:rashad.j.humphreys@outlook.com">
-          ✉️ Email
-        </a>
+        <a href="https://www.linkedin.com/in/rashad-humphreys-a96a992a2" target="_blank">🔗 LinkedIn</a>
+        <a href="mailto:rashad.j.humphreys@outlook.com">✉️ Email</a>
       </div>
     </div>
 
@@ -426,9 +418,10 @@
       <h1>Data-Driven.<br/>People-Focused.</h1>
       <p>
         Hey, I'm Rashad — a senior at UW-Whitewater majoring in Information Technology. 
-        I'm driven by a passion for data and problem-solving, and I'm looking for opportunities 
-        where I can apply my technical skills, grow professionally, and collaborate with others 
-        to solve real problems.
+        I'm driven by a passion for data analysis and software development, and I'm looking 
+        for opportunities where I can apply my technical skills, grow professionally, and 
+        collaborate with others to solve real problems. My background in customer service 
+        has sharpened my communication, adaptability, and problem-solving skills.
       </p>
     </div>
   </section>
@@ -436,7 +429,7 @@
   <!-- SKILLS -->
   <section id="skills">
     <div class="label">What I Work With</div>
-    <div class="section-title">Skills & Tools</div>
+    <div class="section-title">Technical Skills</div>
     <div class="section-sub">Technologies I use to analyze, build, and deliver.</div>
     <div class="skills-grid">
       <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-name">Excel</div></div>
@@ -444,31 +437,71 @@
       <div class="skill-card"><div class="skill-icon">🐧</div><div class="skill-name">Linux</div></div>
       <div class="skill-card"><div class="skill-icon">🗄️</div><div class="skill-name">SQL</div></div>
       <div class="skill-card"><div class="skill-icon">💼</div><div class="skill-name">Microsoft Office</div></div>
-      <div class="skill-card"><div class="skill-icon">☁️</div><div class="skill-name">Azure</div></div>
+      <div class="skill-card"><div class="skill-icon">☁️</div><div class="skill-name">Microsoft Azure</div></div>
       <div class="skill-card"><div class="skill-icon">📓</div><div class="skill-name">Jupyter Notebook</div></div>
       <div class="skill-card"><div class="skill-icon">🔧</div><div class="skill-name">Git</div></div>
       <div class="skill-card"><div class="skill-icon">🌐</div><div class="skill-name">Cloud Computing</div></div>
+      <div class="skill-card"><div class="skill-icon">🖥️</div><div class="skill-name">IT Infrastructure</div></div>
+    </div>
+
+    <div class="label" style="margin-top: 3rem;">Who I Am</div>
+    <div class="section-title" style="font-size: 1.4rem; margin-bottom: 1rem;">Soft Skills</div>
+    <div class="soft-skills">
+      <span class="soft-pill">Flexible & Adaptable</span>
+      <span class="soft-pill">Attention to Detail</span>
+      <span class="soft-pill">Team Builder</span>
+      <span class="soft-pill">Critical Thinker</span>
+      <span class="soft-pill">Problem Solver</span>
+      <span class="soft-pill">Strong Communicator</span>
     </div>
   </section>
 
-  <!-- EXPERIENCE / EDUCATION -->
+  <!-- EXPERIENCE & EDUCATION -->
   <section id="experience">
     <div class="label">Background</div>
     <div class="section-title">Education & Experience</div>
     <div class="section-sub">My journey so far.</div>
     <div class="timeline">
+
       <div class="timeline-item">
         <div class="timeline-year">2022 – Present</div>
         <div class="timeline-title">B.S. Information Technology</div>
-        <div class="timeline-org">University of Wisconsin-Whitewater</div>
-        <div class="timeline-desc">Upcoming senior with a focus on data analysis, cloud systems, and IT infrastructure.</div>
+        <div class="timeline-org">University of Wisconsin-Whitewater — College of Business and Economics</div>
+        <div class="timeline-desc">Upcoming senior with a focus on data analysis, software development, and cloud systems.</div>
       </div>
+
       <div class="timeline-item">
-        <div class="timeline-year">Add your role</div>
-        <div class="timeline-title">Your Job Title Here</div>
-        <div class="timeline-org">Company / Organization</div>
-        <div class="timeline-desc">Brief description of what you did and what you accomplished.</div>
+        <div class="timeline-year">2024 – 2026</div>
+        <div class="timeline-title">Front End Associate</div>
+        <div class="timeline-org">Walmart — Germantown, WI</div>
+        <div class="timeline-desc">Managed front-end operations, delivered excellent customer service, and adapted efficiently in a high-volume retail environment.</div>
       </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2024 – 2025</div>
+        <div class="timeline-title">Election Fellow</div>
+        <div class="timeline-org">Leaders Igniting Transformation — Whitewater, WI</div>
+        <div class="timeline-desc">Engaged in civic leadership, community organizing, and voter engagement initiatives.</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2022 – 2024</div>
+        <div class="timeline-title">Cashier</div>
+        <div class="timeline-org">Sendik's Food Markets — Whitefish Bay, WI</div>
+        <div class="timeline-desc">Delivered excellent customer service and maintained strong attention to detail in a fast-paced environment.</div>
+      </div>
+
+    </div>
+
+    <div class="label" style="margin-top: 3.5rem;">Campus Life</div>
+    <div class="section-title" style="font-size: 1.4rem; margin-bottom: 1.5rem;">Clubs & Activities</div>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">📈</div><div class="skill-name">DECA</div></div>
+      <div class="skill-card"><div class="skill-icon">✊</div><div class="skill-name">Black Student Union</div></div>
+      <div class="skill-card"><div class="skill-icon">🌍</div><div class="skill-name">National Black Student Union</div></div>
+      <div class="skill-card"><div class="skill-icon">🤝</div><div class="skill-name">Latinos Unidos Club</div></div>
+      <div class="skill-card"><div class="skill-icon">🔥</div><div class="skill-name">Leaders Igniting Transformation</div></div>
+      <div class="skill-card"><div class="skill-icon">🔐</div><div class="skill-name">ISACA</div></div>
     </div>
   </section>
 
@@ -527,7 +560,7 @@
   </section>
 
   <footer>
-    © 2025 Rashad Humphreys · Built with HTML & CSS
+    © 2026 Rashad Humphreys · Built with HTML & CSS
   </footer>
 
 </body>
